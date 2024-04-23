@@ -156,3 +156,7 @@ h1 {
   background-color: green;
   margin-left: 20px;
 }
+
+.crossed {
+  text-decoration: line-through;
+}
