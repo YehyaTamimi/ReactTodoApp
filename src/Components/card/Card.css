@@ -1,0 +1,106 @@
+.card {
+    align-self: center;
+    margin-top: 20px;
+    padding: 20px;
+    width: 70%;
+    display: flex;
+    background-color: white;
+    justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  /* Customize the label (the container) */
+  .container {
+    display: flex;
+    position: relative;
+    padding-left: 38px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    flex: 1;
+    align-items: center;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-top: 3px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: green;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 11px;
+    top: 7px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  .edit , .delete {
+    color: white;
+    margin-left: 10px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .delete {
+    background-color: rgb(190, 2, 2);
+    margin-left: 10px;
+  }
+  
+  .edit {
+    background-color: green;
+    margin-left: 20px;
+  }
+  
+  .crossed {
+    text-decoration: line-through;
+  }
