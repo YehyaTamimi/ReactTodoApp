@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Card.css"
 
 export default function TodoCard ({ text }) {
     const [checked, SetChecked] = useState(false);
