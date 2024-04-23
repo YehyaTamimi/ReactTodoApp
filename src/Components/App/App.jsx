@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import './App.css';
 
 import TodoCard from '../card/Card';
@@ -8,6 +8,13 @@ import Input from '../Input/Input';
 function App() {
     const [value, setValue] = useState("");
     const [todos, setTodos] = useState([]);
+    const deleteCard = (id) => {
+        setTodos((prevTodos) => {
+            const copyTodos = [...prevTodos];
+            const filteredTodos = copyTodos.filter((todo) => todo.key !== id);
+            return filteredTodos;
+        });
+    }
 
     const createCard = () => {
         let time = new Date().getTime();
@@ -16,7 +23,7 @@ function App() {
             return;
         }
 
-        const todoCard = <TodoCard key={time} text={text} />
+        const todoCard = <TodoCard key={time} id={time.toString()} text={text} deleteCard={deleteCard} />
         const copy = [todoCard, ...todos];
         setTodos(copy);
         setValue("");

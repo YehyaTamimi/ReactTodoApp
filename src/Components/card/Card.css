@@ -20,7 +20,6 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    flex: 1;
     align-items: center;
   }
   
@@ -81,7 +80,7 @@
     transform: rotate(45deg);
   }
   
-  .edit , .delete {
+  .edit , .delete , .save , .discard{
     color: white;
     margin-left: 10px;
     padding: 10px;
@@ -91,12 +90,24 @@
     height: 40px;
   }
   
-  .delete {
+  .delete, .discard {
     background-color: rgb(190, 2, 2);
     margin-left: 10px;
   }
   
-  .edit {
+  .card .text, .card .text-input {
+    flex: 1;
+    align-self: center;
+    font-size: 1.2rem;
+    margin-left: 10px;
+  }
+  
+  .card .text-input {
+    padding: 10px 10px;
+  }
+  
+  
+  .edit , .save{
     background-color: green;
     margin-left: 20px;
   }
