@@ -1,4 +1,12 @@
 import { useState, useEffect, useRef } from "react";
+import IconButton from '@mui/material/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+
 import "./Card.css"
 
 export default function TodoCard({ text, id, deleteCard }) {
@@ -54,22 +62,40 @@ export default function TodoCard({ text, id, deleteCard }) {
     }
 
     return (
-        <div className='card'>
-            <label className="container">
-                <input type="checkbox" checked={checked} onChange={changeCardState} />
-                <span className="checkmark"></span>
-            </label>
-            {edit ? (<input type='text' className='text-input' value={inputText} onChange={updateInput} ref={inputRef} />) : (<div className='text' onDoubleClick={editText} ><span className={checked ? "crossed" : ""}>{cardText}</span></div>)}
-            {edit ?
-                (<>
-                    <button className='save' onClick={saveChanges}><i className="fa-solid fa-check"></i></button>
-                    <button className='discard' onClick={discardChanges}><i className="fa-solid fa-x"></i></button>
-                </>)
-                :
-                (<>
-                    <button className='edit' onClick={editText}><i className="fa-solid fa-pen-to-square"></i></button>
-                    <button className='delete' onClick={() => deleteCard(id)}><i className="fa-solid fa-trash"></i></button>
-                </>)}
-        </div>
+        <Card className='card'>
+            <CardContent sx={{ display: "flex", justifyContent: "space-around", padding: "0", paddingBottom: "0" }}>
+                <label className="container">
+                    <input type="checkbox" checked={checked} onChange={changeCardState} />
+                    <span className="checkmark"></span>
+                </label>
+                {edit ? (
+                    <input type='text' className='text-input' value={inputText} onChange={updateInput} ref={inputRef} />
+                ) : (
+                    <div className='text' onDoubleClick={editText}>
+                        <span className={checked ? "crossed" : ""}>{cardText}</span>
+                    </div>
+                )}
+
+                {edit ? (
+                    <>
+                        <IconButton className="save" onClick={saveChanges} color="success">
+                            <CheckIcon />
+                        </IconButton>
+                        <IconButton className="discard" onClick={discardChanges} color="error">
+                            <CloseIcon />
+                        </IconButton>
+                    </>
+                ) : (
+                    <>
+                        <IconButton className="edit" onClick={editText} color="success">
+                            <EditIcon />
+                        </IconButton>
+                        <IconButton className="delete" onClick={() => deleteCard(id)} color="error">
+                            <DeleteIcon />
+                        </IconButton>
+                    </>
+                )}
+            </CardContent>
+        </Card>
     )
 }
