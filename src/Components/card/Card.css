@@ -3,9 +3,7 @@
     margin-top: 20px;
     padding: 20px;
     width: 70%;
-    display: flex;
     background-color: white;
-    justify-content: space-around;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
   
@@ -80,43 +78,43 @@
     transform: rotate(45deg);
   }
   
-  .edit , .delete , .save , .discard{
-    color: white;
-    margin-left: 10px;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 1rem;
-    width: 40px;
-    height: 40px;
-  }
-  
-  .delete, .discard {
-    background-color: rgb(190, 2, 2);
-    margin-left: 10px;
-  }
-  
   .card .text, .card .text-input {
     flex: 1;
     align-self: center;
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
     margin-left: 10px;
   }
   
   .card .text-input {
-    padding: 10px 10px;
+    padding: 10px 10px !important;
     width: 10%;
   }
-  
-  
-  .edit , .save{
-    background-color: green;
-    margin-left: 20px;
-  }
-  
+   
   .crossed {
     text-decoration: line-through;
   }
 
+  .edit, .save{
+    background-color: green !important;
+    color: white !important;
+    border-radius: 5px !important;
+    margin-left: 20px !important;
+  }
+
+  .delete, .discard{
+    background-color: red !important;
+    color: white !important;
+    border-radius: 5px !important;
+    margin-left: 10px !important;
+  }
+
+  .css-1fx1rrt-MuiCardContent-root:last-child{
+    padding-bottom: 0 !important;
+  }
+
+  .css-1fx1rrt-MuiCardContent-root .text {
+    flex: 1 !important;
+  }
   @media screen and (max-width: 600px) {
     .card{
       width: 80%;
