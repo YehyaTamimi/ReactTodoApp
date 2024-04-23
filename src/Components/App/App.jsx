@@ -25,7 +25,6 @@ function App() {
 
     const deleteCard = (id) => {
         setTodos((prevTodos) => {
-            console.log(prevTodos)
             const copyTodos = [...prevTodos];
             const filteredTodos = copyTodos.filter((todo) => todo.key !== id);
             return filteredTodos;
