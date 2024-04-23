@@ -104,6 +104,7 @@
   
   .card .text-input {
     padding: 10px 10px;
+    width: 10%;
   }
   
   
@@ -114,4 +115,10 @@
   
   .crossed {
     text-decoration: line-through;
+  }
+
+  @media screen and (max-width: 600px) {
+    .card{
+      width: 80%;
+    }
   }
