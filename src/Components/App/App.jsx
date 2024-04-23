@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 
-import TodoCard from '../../card/Card';
-import Input from '../../Input/Input';
+import TodoCard from '../card/Card';
+import Input from '../Input/Input';
 
 
 function App() {
