@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import './App.css';
 
 import TodoCard from '../card/Card';
@@ -8,12 +8,32 @@ import Input from '../Input/Input';
 function App() {
     const [value, setValue] = useState("");
     const [todos, setTodos] = useState([]);
+
+    useEffect(() => loadSavedCards(), []);
+    
+    const loadSavedCards = () => {
+        const savedCards = JSON.parse(localStorage.getItem("savedCards"));
+        let cards;
+        if (savedCards) {
+           cards = savedCards.map((card) => {
+                return <TodoCard key={card.key} id={card.key} text={card.props.text} deleteCard={deleteCard} />
+            });
+            setTodos(cards);
+        }
+    }
+
+
     const deleteCard = (id) => {
         setTodos((prevTodos) => {
             const copyTodos = [...prevTodos];
             const filteredTodos = copyTodos.filter((todo) => todo.key !== id);
             return filteredTodos;
         });
+
+        const savedCards = JSON.parse(localStorage.getItem("savedCards"));
+        const filteredHistory = savedCards.filter((card) => card.key !== id);
+        localStorage.setItem("savedCards", JSON.stringify(filteredHistory));
+
     }
 
     const createCard = () => {
@@ -27,6 +47,8 @@ function App() {
         const copy = [todoCard, ...todos];
         setTodos(copy);
         setValue("");
+
+        localStorage.setItem("savedCards", JSON.stringify(copy));
     }
 
     return (
