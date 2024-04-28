@@ -73,7 +73,7 @@ export default function TodoCard({ text, id, deleteCard }) {
                 {edit ? (
                     <input type='text' className={cardStyles.textInput} value={inputText} onChange={updateInput} ref={inputRef} />
                 ) : (
-                    <div className='text' onDoubleClick={editText}>
+                    <div className={cardStyles.text} onDoubleClick={editText}>
                         <span className={checked ? cardStyles.crossed : ""}>{cardText}</span>
                     </div>
                 )}
