@@ -65,7 +65,7 @@ export default function TodoCard({ text, id, deleteCard }) {
 
     return (
         <Card className={cardStyles.card}>
-            <CardContent sx={{ display: "flex", justifyContent: "space-around", padding: "0", paddingBottom: "0" }}>
+            <CardContent className={cardStyles.cardContent}>
                 <label className={cardStyles.container}>
                     <input type="checkbox" checked={checked} onChange={changeCardState} />
                     <span className={cardStyles.checkmark}></span>
