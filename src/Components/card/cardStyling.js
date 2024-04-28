@@ -9,9 +9,6 @@ const styles = createUseStyles({
     width: '70%',
     backgroundColor: 'white',
     boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
-    '& .css-1fx1rrt-MuiCardContent-root:last-child': {
-        paddingBottom: '0 !important'
-      },
     '@media screen and (max-width: 600px)': {
       width: '80%',
     }
@@ -113,6 +110,8 @@ const styles = createUseStyles({
     borderRadius: '5px !important',
     marginLeft: '10px !important',
   },
+
+  cardContent: { display: "flex", justifyContent: "space-around", padding: "0", paddingBottom: "0 !important" },
 });
 
 export default styles;
