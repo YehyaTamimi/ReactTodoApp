@@ -1,13 +1,13 @@
 import { useCallback, useState, useEffect } from 'react';
-import './App.css';
-
 import TodoCard from '../card/Card';
 import Input from '../Input/Input';
+import styles from './appStyling.js';
 
 
 function App() {
     const [value, setValue] = useState("");
     const [todos, setTodos] = useState([]);
+    const appStyle = styles();
 
     useEffect(() => loadSavedCards(), []);
     
@@ -53,9 +53,9 @@ function App() {
 
     return (
         <>
-            <div className='hero-image'>
-                <div className='hero-container'>
-                    <h1>T O D O</h1>
+            <div className={appStyle.heroImage}>
+                <div className={appStyle.heroContainer}>
+                    <h1 className={appStyle.h1}>T O D O</h1>
                     <Input value={value} setValue={setValue} createCard={createCard} />
                 </div>
             </div>
