@@ -1,11 +1,11 @@
 import TextField from '@mui/material/TextField';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
-import "./Input.css"
-
+import styles from "./inputStyling.js"
 
 export default function Input({ value, setValue, createCard }) {
 
+    const inputStyles = styles();
     const adjustInput = (e) => {
         setValue(e.target.value);
     }
@@ -17,18 +17,21 @@ export default function Input({ value, setValue, createCard }) {
     }
 
     return (
-        <div className='input-container'>
+        <div className={inputStyles.inputContainer}>
             <TextField
-                className='input'
+                className={inputStyles.input}
                 id="filled-search"
                 type="text"
                 variant="standard"
                 placeholder='add a new Todo'
                 value={value}
                 onChange={adjustInput} onKeyDown={HandleEnterPress}
+                InputProps={{
+                    disableUnderline: true 
+                  }}
 
             />
-            <IconButton className="add" onClick={createCard} variant="contained"><AddIcon /></IconButton>
+            <IconButton className={inputStyles.add} onClick={createCard} variant="contained"><AddIcon /></IconButton>
         </div>
     )
 }

@@ -6,8 +6,8 @@ import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import styles from "./cardStyling.js"
 
-import "./Card.css"
 
 export default function TodoCard({ text, id, deleteCard }) {
     const [checked, SetChecked] = useState(false);
@@ -15,6 +15,8 @@ export default function TodoCard({ text, id, deleteCard }) {
     const [inputText, setInputText] = useState(cardText);
     const [edit, setEdit] = useState(false);
     const inputRef = useRef(null);
+    
+    const cardStyles = styles();
 
     useEffect(() => {
         if (edit && inputRef.current) {
@@ -62,35 +64,35 @@ export default function TodoCard({ text, id, deleteCard }) {
     }
 
     return (
-        <Card className='card'>
-            <CardContent sx={{ display: "flex", justifyContent: "space-around", padding: "0", paddingBottom: "0" }}>
-                <label className="container">
+        <Card className={cardStyles.card}>
+            <CardContent className={cardStyles.cardContent}>
+                <label className={cardStyles.container}>
                     <input type="checkbox" checked={checked} onChange={changeCardState} />
-                    <span className="checkmark"></span>
+                    <span className={cardStyles.checkmark}></span>
                 </label>
                 {edit ? (
-                    <input type='text' className='text-input' value={inputText} onChange={updateInput} ref={inputRef} />
+                    <input type='text' className={cardStyles.textInput} value={inputText} onChange={updateInput} ref={inputRef} />
                 ) : (
-                    <div className='text' onDoubleClick={editText}>
-                        <span className={checked ? "crossed" : ""}>{cardText}</span>
+                    <div className={cardStyles.text} onDoubleClick={editText}>
+                        <span className={checked ? cardStyles.crossed : ""}>{cardText}</span>
                     </div>
                 )}
 
                 {edit ? (
                     <>
-                        <IconButton className="save" onClick={saveChanges} color="success">
+                        <IconButton className={cardStyles.save} onClick={saveChanges} color="success">
                             <CheckIcon />
                         </IconButton>
-                        <IconButton className="discard" onClick={discardChanges} color="error">
+                        <IconButton className={cardStyles.discard} onClick={discardChanges} color="error">
                             <CloseIcon />
                         </IconButton>
                     </>
                 ) : (
                     <>
-                        <IconButton className="edit" onClick={editText} color="success">
+                        <IconButton className={cardStyles.edit} onClick={editText} color="success">
                             <EditIcon />
                         </IconButton>
-                        <IconButton className="delete" onClick={() => deleteCard(id)} color="error">
+                        <IconButton className={cardStyles.delete} onClick={() => deleteCard(id)} color="error">
                             <DeleteIcon />
                         </IconButton>
                     </>
