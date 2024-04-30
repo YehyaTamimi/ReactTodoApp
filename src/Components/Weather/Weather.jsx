@@ -30,7 +30,7 @@ export default function Weather() {
         weatherRequest.defaults.params = { ...weatherRequest.defaults.params, ...location }
         if (weatherRequest.defaults.params.lat) {
             weatherRequest.get()
-                .then(reponse => reponse.data)
+                .then(response => response.data)
                 .then(data => getData(data))
                 .catch(error => setError(error))
         }
@@ -38,23 +38,24 @@ export default function Weather() {
 
     const getData = (data) => {
         const { main, weather } = data;
-        const { icon } = weather[0];
         const { temp } = main;
         setTemp(parseInt(temp))
-        setWeatherIcon(icon);
+
+        if (weather.length > 0) {
+            const { icon } = weather[0];
+            setWeatherIcon(icon);
+        }
+
     }
 
     return (
         <>
-        {location ? (
-            <div className={weatherStyle.container}>
-                {error ? (<h1> Error Fetching Weather</h1>) :
-                    <>
+            {location && !error && (
+                    <div className={weatherStyle.container}>
                         <div>Weather</div>
                         <p> <img className={weatherStyle.weatherIcon} src={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`} alt="weather icon" /> <span>{temp}</span></p>
-                    </>
-                }
-            </div>) : "" }
+                    </div>
+            )}
         </>
     )
 }
