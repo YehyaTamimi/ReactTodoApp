@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import TodoCard from '../card/Card';
 import Input from '../Input/Input';
 import styles from './appStyling.js';
@@ -17,13 +17,14 @@ function App() {
     const loadSavedCards = () => {
         const savedCards = JSON.parse(localStorage.getItem("savedCards"));
         let cards;
+        
         if (savedCards) {
             cards = savedCards.map((card) => {
-                    if (state.delete && (card.key === state.id)) {
+                    if (state?.delete && (card.key === state?.id)) {
                         return;
                     }
 
-                    if (card.key === state.id) {
+                    if (card.key === state?.id) {
                         return <TodoCard key={card.key} id={card.key} text={state.title} deleteCard={deleteCard} check={state.check} />
                     }
                     return <TodoCard key={card.key} id={card.key} text={card.props.text} deleteCard={deleteCard} />
