@@ -111,7 +111,7 @@ const styles = createUseStyles({
     marginLeft: '10px !important',
   },
 
-  cardContent: { display: "flex", justifyContent: "space-around", padding: "0", paddingBottom: "0 !important" },
+  cardContent: { display: "flex", justifyContent: "space-around", padding: "0 !important", paddingBottom: "0 !important" },
 });
 
 export default styles;
