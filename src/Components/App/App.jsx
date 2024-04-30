@@ -2,6 +2,7 @@ import { useCallback, useState, useEffect } from 'react';
 import TodoCard from '../card/Card';
 import Input from '../Input/Input';
 import styles from './appStyling.js';
+import Weather from '../Weather/Weather.jsx';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
     return (
         <>
             <div className={appStyle.heroImage}>
+                <Weather />
                 <div className={appStyle.heroContainer}>
                     <h1 className={appStyle.h1}>T O D O</h1>
                     <Input value={value} setValue={setValue} createCard={createCard} />
