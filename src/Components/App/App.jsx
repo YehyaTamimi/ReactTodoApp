@@ -17,19 +17,16 @@ function App() {
     const loadSavedCards = () => {
         const savedCards = JSON.parse(localStorage.getItem("savedCards"));
         let cards;
-        
+
         if (savedCards) {
-            cards = savedCards.map((card) => {
+            cards = savedCards.map((card, index) => {
                     if (state?.delete && (card.key === state?.id)) {
-                        return;
+                            return;   
                     }
 
-                    if (card.key === state?.id) {
-                        return <TodoCard key={card.key} id={card.key} text={state.title} deleteCard={deleteCard} check={state.check} />
-                    }
-                    return <TodoCard key={card.key} id={card.key} text={card.props.text} deleteCard={deleteCard} />
+                    return addPropsToCard(card);
             });
-
+            console.log(cards)
             const cardsFinal = cards.filter((card) => card !== undefined)
             setTodos(cardsFinal);
             localStorage.setItem("savedCards", JSON.stringify(cardsFinal));
@@ -37,6 +34,21 @@ function App() {
         }
     }
 
+    const addPropsToCard = (card) => {
+       const cardProps = {
+        key : card.key,
+        id: card.key,
+        text: card.props.text,
+        deleteCard: deleteCard,
+       }
+
+       if(card.key === state?.id){
+        cardProps.text = state.text;
+        cardProps.check = state.check;
+       }
+
+       return <TodoCard {...cardProps}/>
+    }
 
     const deleteCard = (id) => {
         setTodos((prevTodos) => {
