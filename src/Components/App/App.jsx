@@ -3,9 +3,11 @@ import TodoCard from '../card/Card';
 import Input from '../Input/Input';
 import styles from './appStyling.js';
 import Weather from '../Weather/Weather.jsx';
+import { useLocation } from 'react-router-dom';
 
 
 function App() {
+    const { state } = useLocation();
     const [value, setValue] = useState("");
     const [todos, setTodos] = useState([]);
     const appStyle = styles();
@@ -16,10 +18,21 @@ function App() {
         const savedCards = JSON.parse(localStorage.getItem("savedCards"));
         let cards;
         if (savedCards) {
-           cards = savedCards.map((card) => {
-                return <TodoCard key={card.key} id={card.key} text={card.props.text} deleteCard={deleteCard} />
+            cards = savedCards.map((card) => {
+                    if (state.delete && (card.key === state.id)) {
+                        return;
+                    }
+
+                    if (card.key === state.id) {
+                        return <TodoCard key={card.key} id={card.key} text={state.title} deleteCard={deleteCard} check={state.check} />
+                    }
+                    return <TodoCard key={card.key} id={card.key} text={card.props.text} deleteCard={deleteCard} />
             });
-            setTodos(cards);
+
+            const cardsFinal = cards.filter((card) => card !== undefined)
+            setTodos(cardsFinal);
+            localStorage.setItem("savedCards", JSON.stringify(cardsFinal));
+
         }
     }
 
