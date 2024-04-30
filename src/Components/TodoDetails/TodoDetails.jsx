@@ -58,7 +58,7 @@ export default function TodoDetails() {
     }, [])
 
     const editForm = () => {
-        if (edit === true) {
+        if (edit) {
             if (inputTitle !== "") {
                 setTitle(inputTitle);
             }
