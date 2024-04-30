@@ -2,6 +2,7 @@ import { createUseStyles } from 'react-jss';
 
 const styles = createUseStyles({
     heroImage: {
+      position: "relative",
       backgroundImage: `url(${require('../../images/background.jpg')})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
