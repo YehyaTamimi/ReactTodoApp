@@ -17,7 +17,7 @@ const styles = createUseStyles({
     },
 
     input: {
-      padding: '5px 0px 5px 10px',
+      padding: '5px 0px 5px 10px !important',
       width: '100%',
       fontSize: '1rem',
       backgroundColor: 'white',
