@@ -11,6 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CheckIcon from '@mui/icons-material/Check';
 import { Button } from "@mui/base";
 import TextField from '@mui/material/TextField';
+import React from 'react';
 
 
 
@@ -60,6 +61,7 @@ export default function TodoDetails() {
     const editForm = () => {
         if (edit) {
             if (inputTitle !== "") {
+                console.log(inputTitle)
                 setTitle(inputTitle);
             }
         }
@@ -96,6 +98,7 @@ export default function TodoDetails() {
             priority: priortiy,
             status: status
         }
+        console.log(storageState);
         localStorage.setItem(id, JSON.stringify(storageState))
     }
 

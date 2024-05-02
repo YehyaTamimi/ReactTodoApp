@@ -4,6 +4,7 @@ import Input from '../Input/Input';
 import styles from './appStyling.js';
 import Weather from '../Weather/Weather.jsx';
 import { useLocation } from 'react-router-dom';
+import React from 'react';
 
 
 function App() {
@@ -23,10 +24,8 @@ function App() {
                     if (state?.delete && (card.key === state?.id)) {
                             return;   
                     }
-
                     return addPropsToCard(card);
             });
-            console.log(cards)
             const cardsFinal = cards.filter((card) => card !== undefined)
             setTodos(cardsFinal);
             localStorage.setItem("savedCards", JSON.stringify(cardsFinal));
@@ -43,7 +42,7 @@ function App() {
        }
 
        if(card.key === state?.id){
-        cardProps.text = state.text;
+        cardProps.text = state.title;
         cardProps.check = state.check;
        }
 
