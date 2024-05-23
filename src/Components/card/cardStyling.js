@@ -112,6 +112,18 @@ const styles = createUseStyles({
   },
 
   cardContent: { display: "flex", justifyContent: "space-around", padding: "0 !important", paddingBottom: "0 !important" },
+
+  btn : {
+    backgroundColor: "orange",
+    padding: "10px",
+    marginLeft: "10px",
+    marginTop: "0px",
+    borderRadius: "5px",
+    cursor: "pointer",
+    height: "39px",
+    color: "white",
+    fontWeight: "600"
+  }
 });
 
 export default styles;

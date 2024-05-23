@@ -2,6 +2,7 @@ import TextField from '@mui/material/TextField';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
 import styles from "./inputStyling.js"
+import React from 'react';
 
 export default function Input({ value, setValue, createCard }) {
 

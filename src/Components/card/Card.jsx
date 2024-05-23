@@ -7,10 +7,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import styles from "./cardStyling.js"
+import { Link } from 'react-router-dom';
+import { Button } from "@mui/base";
+import React from 'react';
 
 
-export default function TodoCard({ text, id, deleteCard }) {
-    const [checked, SetChecked] = useState(false);
+export default function TodoCard({ text, id, deleteCard, check=false }) {
+    const [checked, SetChecked] = useState(check);
     const [cardText, setCardText] = useState(text);
     const [inputText, setInputText] = useState(cardText);
     const [edit, setEdit] = useState(false);
@@ -63,6 +66,18 @@ export default function TodoCard({ text, id, deleteCard }) {
         localStorage.setItem("savedCards", JSON.stringify(updatedCardsHistory));
     }
 
+    // const goToDetails = () => {
+    //     history.push(`/todos/${id}`, {
+    //         check: checked,
+    //         title: cardText,
+    //        })
+    // }
+
+    const t = {
+        check: checked,
+        title: cardText
+    }
+
     return (
         <Card className={cardStyles.card}>
             <CardContent className={cardStyles.cardContent}>
@@ -95,6 +110,9 @@ export default function TodoCard({ text, id, deleteCard }) {
                         <IconButton className={cardStyles.delete} onClick={() => deleteCard(id)} color="error">
                             <DeleteIcon />
                         </IconButton>
+                        <Link to={`/todos/${id}`} state={{check: checked, title: cardText}}>
+                            <Button variant="contained" className={cardStyles.btn}>Details</Button>
+                        </Link>
                     </>
                 )}
             </CardContent>
